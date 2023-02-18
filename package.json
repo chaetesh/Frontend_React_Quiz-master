@@ -1,7 +1,6 @@
 {
 	"name": "form-react-app",
 	"version": "0.1.0",
-	"homepage": "https://chaetesh.github.io/react_quiz_App",
 	"private": true,
 	"dependencies": {
 		"@lottiefiles/react-lottie-player": "^3.5.0",
