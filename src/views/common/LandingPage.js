@@ -3,10 +3,11 @@ import { Row} from 'react-bootstrap';
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
 
 class LandingPage extends React.Component {
+    constructor(props){
+        super(props);
+    }
     handleRedirectToSignUp = () => {
-        const signupUrl = "http://localhost:3000/signup";
-        console.log(signupUrl);
-        window.location.href = signupUrl;
+        this.props.history.push("/signup");
     }
     
     render() {

@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import CreateQuiz from "../quiz/createQuiz";
 
 const PaymentRoute = (props) => {
   // If paid can Attempt Quiz

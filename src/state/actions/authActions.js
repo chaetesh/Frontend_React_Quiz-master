@@ -1,5 +1,6 @@
 import axios from "axios";
-const url = "/api/v1";
+const dotenv = require("dotenv");
+dotenv.config({ path: ".env" });
 
 const setTokenToAxios = (token) => {
   axios.defaults.headers.common["authorization"] =
@@ -9,7 +10,7 @@ const setTokenToAxios = (token) => {
 setTokenToAxios();
 
 const userSignup = async (data) => {
-  await axios.post('http://localhost:3001/api/v1/users',data)
+  await axios.post(`${process.env.REACT_APP_HOMEURL}/users`,data)
   .then(function (response) {
     console.log(response);
     return response;
@@ -21,7 +22,8 @@ const userSignup = async (data) => {
 
 const userLogin = (data) => {
   return async (dispatch) => {
-    let res = await axios.post('http://localhost:3001/api/v1/users/login', data);
+    console.log("first: ",process.env.REACT_APP_HOMEURL);
+    let res = await axios.post(`${process.env.REACT_APP_HOMEURL}/users/login`, data);
     //store the token in the local
     localStorage.setItem("auth-token", res.data.token);
     setTokenToAxios(res.data.token);
@@ -38,7 +40,7 @@ const identifyUser = () => {
     try {
       dispatch({ type: "FETCH_CURRENT_USER_START" });
 
-      let user = await axios.get('http://localhost:3001/api/v1/users');
+      let user = await axios.get(`${process.env.REACT_APP_HOMEURL}/users`);
 
       dispatch({
         type: "FETCH_CURRENT_USER_SUCCESS",

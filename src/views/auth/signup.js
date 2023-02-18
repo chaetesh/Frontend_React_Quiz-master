@@ -28,28 +28,15 @@ class Signup extends React.Component {
     // validation is missing
     // For SigningUp
     setTimeout(async () => {
-      try {
-        var res = await userSignup(this.state);
-        console.log(res.status);
-        this.setState({ isPosting: false });
-
-        if (res.status === 200) {
-          this.setState({
-            successMsg: (
-              <p>
-                Signed up successfully. <Link to="/login">Login here.</Link>
-              </p>
-            ),
-            errorMsg: "",
-          });
-        }
-      } catch (error) {
+      var res = await userSignup(this.state);
+      console.log(res);
+      if(res){
         this.setState({
-          successMsg: "",
-          errorMsg: <p>{error.error || "Something went wrong."}</p>,
+          successMsg: "Sign Up Succesfull"
         });
-      }
-    }, 3000);
+        }
+        this.setState({ isPosting: false });
+    }, 1000);
   };
   render() {
     return (

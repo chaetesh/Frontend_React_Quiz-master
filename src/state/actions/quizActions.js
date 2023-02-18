@@ -13,7 +13,7 @@ const createQuiz = (data) => {
 		try {
 			dispatch({ type: "FETCH_CURRENT_USER_START" });
 			console.log("data: ",data);
-			let quiz = await axios.post('http://localhost:3001/api/v1/quiz', data);
+			let quiz = await axios.post(`${process.env.REACT_APP_HOMEURL}/quiz`, data);
 
 			dispatch({
 			  type: "FETCH_CURRENT_USER_SUCCESS",
@@ -28,7 +28,7 @@ const createQuiz = (data) => {
 const quizList = () => {
 	return async (dispatch) => {
 		try {
-			let quizzes = await axios.get('http://localhost:3001/api/v1/quiz/:id');
+			let quizzes = await axios.get(`${process.env.REACT_APP_HOMEURL}/quiz/:id`);
 			dispatch({
 				type: "FETCH_QUIZ_LIST",
 				payload: quizzes.data,
@@ -40,7 +40,7 @@ const quizList = () => {
 const showQuiz = (id) => {
 	return async (dispatch) => {
 		try {
-			let quiz = await axios.get(`http://localhost:3001/api/v1/quiz/${id}`);
+			let quiz = await axios.get(`${process.env.REACT_APP_HOMEURL}/quiz/${id}`);
 			dispatch({
 				type: "FETCH_QUIZ",
 				payload: quiz.data.quiz,
@@ -67,7 +67,7 @@ const updateQuestion = (id, data) => {
 const deleteQuiz = (id) => {
 	return async (dispatch) => {
 		try {
-			await axios.delete(`'http://localhost:3001/api/v1/quiz/${id}`);
+			await axios.delete(`${process.env.REACT_APP_HOMEURL}/quiz/${id}`);
 			dispatch({
 				type: "DELETE_QUIZ",
 				payload: id,
@@ -80,7 +80,7 @@ const attemptQuiz = (attempt) => {
 	return async (dispatch) => {
 		try {
 			var quizResult = await axios.post(
-				'http://localhost:3001/api/v1/quiz/:id/attempt',
+				'`${process.env.REACT_APP_HOMEURL}/quiz/:id/attempt`',
 				attempt
 			);
 			console.log(quizResult);
