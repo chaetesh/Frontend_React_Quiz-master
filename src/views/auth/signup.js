@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { userSignup } from "../../state/actions/authActions";
+import Notiflix from 'notiflix';
 
 class Signup extends React.Component {
+  constructor(props){
+    super(props);
+  }
   state = {
     name: "",
     email: "",
@@ -28,14 +32,14 @@ class Signup extends React.Component {
     // validation is missing
     // For SigningUp
     setTimeout(async () => {
-      var res = await userSignup(this.state);
-      console.log(res);
-      if(res){
-        this.setState({
-          successMsg: "Sign Up Succesfull"
-        });
-        }
-        this.setState({ isPosting: false });
+      try{
+        var res = await userSignup(this.state);
+			  Notiflix.Notify.success('SignedUp Succesfully, Please Login');
+        this.props.history.push("/login");
+      }
+      catch{
+        this.setState({errorMsg:"Something Went Wrong"});
+      }
     }, 1000);
   };
   render() {

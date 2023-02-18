@@ -12,7 +12,7 @@ class LandingPage extends React.Component {
     
     render() {
         return(
-            <>
+            <div style={{backgroundImage: "url('/logo_bg_home.jpg')",color:"white"}}>
               <div style={{display: 'flex', flexDirection: 'row-reverse', alignItems: 'center', marginRight:'20px'}}>
                <Row style={{alignSelf: 'flex-end', marginRight: '80px'}}>
                <Player
@@ -46,7 +46,7 @@ class LandingPage extends React.Component {
             </div> 
             </div>
             <button onClick={() => {this.handleRedirectToSignUp()}}style={{width: '150px', height: '40px', marginLeft: '80%', marginBottom: '100px', border: 'none', borderRadius: '5px', backgroundColor: '#F3D724'}}>Sign Up Now</button>
-            </>
+            </div>
         )
     }
 }
