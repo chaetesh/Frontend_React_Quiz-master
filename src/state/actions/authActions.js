@@ -10,14 +10,17 @@ const setTokenToAxios = (token) => {
 setTokenToAxios();
 
 const userSignup = async (data) => {
+  let res;
   await axios.post(`${process.env.REACT_APP_HOMEURL}/users`,data)
   .then(function (response) {
     console.log(response);
-    return response;
+    res = response;
   })
   .catch(function (error) {
     console.log(error);
+    return error;
   });
+  return res;
 };
 
 const userLogin = (data) => {

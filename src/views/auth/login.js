@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { userLogin } from "../../state/actions/authActions";
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import Notiflix from 'notiflix';
 
 class Login extends React.Component {
@@ -10,6 +11,7 @@ class Login extends React.Component {
 			email: "",
 			password: "",
 			errorMsg: "",
+			isLoading: false,
 		};
 	}
 
@@ -20,36 +22,37 @@ class Login extends React.Component {
 	handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
+			this.setState({isLoading: true})
 			let res = await this.props.dispatch(userLogin(this.state));
-			
+			this.setState({isLoading: false})
 			console.log(res, "inside submit");
 
 			if (!res) {
-				return this.setState({
-					errorMsg: <p>{"Something went wrong."}</p>,
-				});
+				Notiflix.Notify.warning('Invalid Credentials!!');
+				return;
 			}
 			Notiflix.Notify.success('Logged In Successfully');
 			console.log("login props: ",this.props);
 			this.props.history.push("/quiz/pay");
 		} catch (error) {
-			console.log("inside catch");
+			this.setState({isLoading: false})
+          Notiflix.Notify.warning('Invalid Credentials!!');
 		}
 		//preventDdefault
 	};
 
 	render() {
 		return (
-			<section className="bg_login">
-				<h1>{this.state.errorMsg}</h1>
+			<section className="girl_image"style={{backgroundSize:'cover',height:'91vh'}}>
 				<div className="container">
+					{this.state.isLoading?Loading.dots(): Loading.remove()}
 					<div className="row">
-						<div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
-							<div className="card card-signin my-5">
+						<div className="col-sm-9 col-md-7 col-lg-5 mx-auto position-absolute mt-5" style={{right:"0"}}>
+							<div className="text-white card-signin my-5">
 								<div className="card-body">
-									<h5 className="card-title text-center">
+									<h1 className="text-center mb-4" style={{fontSize:"1.5rem"}}>
 										Sign In
-									</h5>
+									</h1>
 									<form className="form-signin">
 										<div className="form-label-group">
 											<input
@@ -112,11 +115,11 @@ class Login extends React.Component {
 										</button>
 										<hr className="my-4" />
 									</form>
-									<div className="my-2">
+									<h5 className="my-2">
 										{" "}
-										Does't have an account.{" "}
+										Doesn't have an account.{" "}
 										<a href="/signup"> Signup</a>
-									</div>
+									</h5>
 								</div>
 							</div>
 						</div>

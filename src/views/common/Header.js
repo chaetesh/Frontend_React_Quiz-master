@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { connect } from "react-redux";
@@ -24,12 +24,12 @@ function Header(props) {
 			);
 	}
 	return (
-		<div className="bg-dark ">
+		<div className=" " style={{backgroundColor:"#0f392d"}}>
 			<div className="container">
-				<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-					<a className="navbar-brand font-weight-bold" href="/">
+				<nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor:"#0f392d"}}>
+					<Link className="navbar-brand font-weight-bold" to="/">
 						Quiz
-					</a>
+					</Link>
 					<button
 						className="navbar-toggler"
 						type="button"
@@ -45,6 +45,15 @@ function Header(props) {
 						<ul className="navbar-nav ml-auto font-weight-bold">
 							{props.user ? (
 								<>
+									<li className="nav-item">
+										<NavLink
+											to="/contact"
+											activeClassName="active"
+											className="nav-link text-white"
+										>
+											Contact
+										</NavLink>
+									</li>
 									<li className="nav-item">
 										<NavLink
 											to="/profile"

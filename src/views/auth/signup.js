@@ -29,34 +29,44 @@ class Signup extends React.Component {
       return;
     }
 
+    if(this.state.name.length <= 2){
+      Notiflix.Notify.warning('Name Must be atleast 3 Charecters!');
+      return;
+    }
+    if(!this.state.email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
+      Notiflix.Notify.warning('Please enter Correct email adderss!');
+      return;
+    }
+    if(this.state.password.length <= 5){
+      Notiflix.Notify.warning('Password Must be atleast 6 Charecters!');
+      return;
+    }
+    if(this.state.password.length <= 4){
+      Notiflix.Notify.warning('Please enter Correct UPI details');
+      return;
+    }
+
     // validation is missing
     // For SigningUp
-    setTimeout(async () => {
-      try{
         var res = await userSignup(this.state);
-			  Notiflix.Notify.success('SignedUp Succesfully, Please Login');
-        this.props.history.push("/login");
-      }
-      catch{
-        this.setState({errorMsg:"Something Went Wrong"});
-      }
-    }, 1000);
+        console.log("res: ",res);
+        if(res){
+          Notiflix.Notify.success('SignedUp Succesfully, Please Login');
+          this.props.history.push("/login");
+        }
+        else{
+          Notiflix.Notify.warning('Something Went Wrong!!, Please try again');
+        }
   };
   render() {
     return (
-      <section className="bg_signup">
+      <section className="girl_image" style={{backgroundSize:'cover',height:'91vh'}}>
         <div className="container">
-          <div style={{ background: "green", color: "white" }}>
-            {this.state.successMsg}
-          </div>
-          <div style={{ background: "red", color: "white" }}>
-            {this.state.errorMsg}
-          </div>
           <div className="row">
-            <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
-              <div className="card card-signin my-5">
+            <div className="col-sm-9 col-md-7 col-lg-5 mx-auto position-absolute" style={{right:"0"}}>
+              <div className="text-white card-signin my-5">
                 <div className="card-body">
-                  <h5 className="card-title text-center">Register</h5>
+                  <h1 className="text-center mb-4" style={{fontSize:"1.5rem"}}>Register</h1>
                   <form className="form-signin">
                     <div className="form-label-group">
                       <input
@@ -111,7 +121,7 @@ class Signup extends React.Component {
                         required
                         autoFocus
                       />
-                      <label htmlFor="inputUsername">Gpay Address - Please enter the correct UPI address</label>
+                      <label htmlFor="inputgPay">Gpay Address - Please enter the correct UPI address</label>
                     </div>
 
                     <button
@@ -121,10 +131,10 @@ class Signup extends React.Component {
                       Signup
                     </button>
                   </form>
-                  <div className="my-2">
+                  <h5 className="my-2">
                     {" "}
                     Already has an account. <Link to="/login"> Login</Link>
-                  </div>
+                  </h5>
                 </div>
               </div>
             </div>

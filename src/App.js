@@ -15,6 +15,7 @@ import EditQuiz from "./views/quiz/editQuiz";
 import { identifyUser } from "./state/actions/authActions";
 import Profile from "./views/auth/Profile";
 import QuizResult from "./views/quiz/QuizResult";
+import Contact from "./views/auth/Contact";
 require("dotenv").config();	
 
 class App extends React.Component {
@@ -41,6 +42,7 @@ class App extends React.Component {
 					 <Route exact path="/quiz/:id" component={AttemptQuiz} />
 					 <Route exact path="/quiz/:id/edit" component={EditQuiz} />
 					 <Route path="/profile" component={Profile} />
+					 <Route path="/contact" component={Contact} />
 					 <Route path="/quizresult" component={QuizResult} />
 				 </Switch>
 			 );

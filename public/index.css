@@ -1,0 +1,13 @@
+    /* Large */
+    @media (min-width: 992px) {
+        .girl_image {
+            background-image: url('login_bg_large.png');
+        }
+    }
+    /* Small */
+    @media (max-width: 991px) {
+        .girl_image {
+          background-image: url('login_bg_small.png');
+          height: 95vh !important;
+        }
+      }

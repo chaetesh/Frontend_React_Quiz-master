@@ -12,7 +12,7 @@ class LandingPage extends React.Component {
     
     render() {
         return(
-            <div style={{backgroundImage: "url('/logo_bg_home.jpg')",color:"white"}}>
+            <div style={{backgroundImage: "url('/logo_bg_home.jpg')",color:"white",backgroundSize:"cover",boxShadow:"inset 0 0 0 2000px rgb(15 57 45 / 40%)"}}>
               <div style={{display: 'flex', flexDirection: 'row-reverse', alignItems: 'center', marginRight:'20px'}}>
                <Row style={{alignSelf: 'flex-end', marginRight: '80px'}}>
                <Player
@@ -26,12 +26,12 @@ class LandingPage extends React.Component {
                </Row>
                <Row style={{paddingLeft: '50px', marginRight: '`175`px', alignSelf: 'center',justifyContent: 'flex-start'}}>
                 <div style={{padding:'20px'}}>
-                    <h1>Quran Quiz Competition</h1>
-                    <h6 style={{marginTop:'25px'}}>This is just a simple Quran competition for the people who love quran and enthusiast. we are giving rewards for the winner of the quiz.</h6>
+                    <h1>WORLD ONLINE QURAN QUIZ COMPETITION</h1>
+                    <h6 style={{marginTop:'25px'}}>Join with just Rs 15 and be a winner. This is just a simple Quran competition for the people who love quran and enthusiast. we are giving rewards for the winner of the quiz.</h6>
                 </div>
                </Row>
             </div>
-            <div style={{display: 'flex', justifyContent: 'center'}}>
+            <div style={{display: 'flex'}}>
             <Player
                 autoplay
                 keepLastFrame={true}
@@ -42,7 +42,7 @@ class LandingPage extends React.Component {
                 </Player>
             <div style={{alignSelf: 'center', marginRight: '100px'}}>
                 <h2>Be a winner and get your rewards</h2>
-                <h6>What are you waiting for ! come on Join it Now...</h6>
+                <h6>Answer just 10 simple questions and be a winner of Rs 10,000. What are you waiting for ! come on Join it Now...</h6>
             </div> 
             </div>
             <button onClick={() => {this.handleRedirectToSignUp()}}style={{width: '150px', height: '40px', marginLeft: '80%', marginBottom: '100px', border: 'none', borderRadius: '5px', backgroundColor: '#F3D724'}}>Sign Up Now</button>
